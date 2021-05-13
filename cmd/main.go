@@ -1,7 +1,7 @@
 package main
 
 import (
-	"https-server/api"
+	"https-server/pkg/api"
 )
 
 type Article struct {
@@ -15,10 +15,8 @@ type Article struct {
 // to simulate a database
 var Articles []Article
 
+var ListenerGlobal []api.Listener
+
 func main() {
-	Articles = []Article{
-		Article{Title: "Hello", Desc: "Article Description", Content: "Article Content"},
-		Article{Title: "Hello 2", Desc: "Article Description", Content: "Article Content"},
-	}
-	api.HandleRequests()
+	api.HandleRequests(&ListenerGlobal)
 }
